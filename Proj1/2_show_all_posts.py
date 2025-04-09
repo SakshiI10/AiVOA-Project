@@ -8,7 +8,13 @@ conn = mysql.connector.connect(
 )
 
 cursor = conn.cursor()
-print("Connected to MySQL")
+
+cursor.execute("SELECT title FROM posts")
+titles = cursor.fetchall()
+
+print("\nAll Post Titles:")
+for i, (title,) in enumerate(titles, start=1):
+    print(f"{i}. {title}")
 
 cursor.close()
 conn.close()
