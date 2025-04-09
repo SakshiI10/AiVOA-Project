@@ -7,13 +7,13 @@ faq_data = {
 
     "Who created LangGraph?": "Harrison Chase, the original developer of LangChain, led the team at LangChain that produced LangGraph.",
 
-    "When was LangGraph introduced?": "It was introduced in 2024",
+    "When was LangGraph introduced?": "It was introduced in 2024.",
 
     "How does LangGraph work?": "It enables you to specify a graph of nodes (such as agents or functions) with data (state) flowing between them.",
 
     "It is built using which language?": "LangGraph is built in Python.",
 
-    "Is LangGraph available on GitHub?": "Yes, it is available on GitHub"
+    "Is LangGraph available on GitHub?": "Yes, it is available on GitHub."
 }
 
 class FAQState(TypedDict):
@@ -21,7 +21,7 @@ class FAQState(TypedDict):
     answer: str
 
 def find_best_answer(state: FAQState) -> FAQState:
-    user_question = state["Question"]
+    user_question = state["question"]
     best_match, score, _ = process.extractOne(
         user_question, faq_data.keys(), scorer=fuzz.token_sort_ratio
     )
@@ -31,7 +31,7 @@ def find_best_answer(state: FAQState) -> FAQState:
     else:
         answer = "Sorry, I don't know the answer."
 
-    return {"Question": user_question, "Answer": answer}
+    return {"question": user_question, "answer": answer}
 
 builder = StateGraph(FAQState)
 builder.add_node("get_answer", find_best_answer)
