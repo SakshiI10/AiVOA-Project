@@ -1,13 +1,13 @@
 import mysql.connector
 
-conn = mysql.connector.connect(
+connection = mysql.connector.connect(
     host="localhost",
     user="root",               
     password="root123", 
     database="blog_db"  
 )
 
-cursor = conn.cursor()
+cursor = connection.cursor()
 
 cursor.execute("SELECT title FROM posts")
 titles = cursor.fetchall()
@@ -17,4 +17,4 @@ for i, (title,) in enumerate(titles, start=1):
     print(f"{i}. {title}")
 
 cursor.close()
-conn.close()
+connection.close()
