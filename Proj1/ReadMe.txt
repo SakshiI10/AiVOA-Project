@@ -1,3 +1,4 @@
+Run following files sequentially.
 1. "1_create" file is used to create new posts with comma-separated tags. Run it using cmd and a new post will be created successfully.
 
 2. "2_show_all_posts" is used to view all post titles. Run it using cmd to view all the titles.
