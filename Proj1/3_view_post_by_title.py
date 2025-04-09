@@ -1,13 +1,13 @@
 import mysql.connector
 
-conn = mysql.connector.connect(
+connection = mysql.connector.connect(
     host="localhost",
     user="root",               
     password="root123", 
     database="blog_db"  
 )
 
-cursor = conn.cursor()
+cursor = connection.cursor()
 
 title_input = input("Enter the post title to view: ").strip()
 
@@ -21,4 +21,4 @@ else:
     print("\nPost not found.")
 
 cursor.close()
-conn.close()
+connection.close()
